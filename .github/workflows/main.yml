@@ -1,0 +1,23 @@
+name: CI  # Name of the workflow
+
+on:
+  push:
+    branches: [ "main" ]  # Workflow triggers on push events to the "main" branch
+  pull_request:
+    branches: [ "main" ]  # Workflow triggers on pull requests targeting the "main" branch
+  workflow_dispatch:  # Allows the workflow to be triggered manually from the GitHub Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # The job runs on the latest Ubuntu environment
+    
+    steps:
+      - uses: actions/checkout@v4  # Checks out the repository so the job can access it
+
+      - name: Run a one-line script
+        run: echo Hello, world!  # Prints "Hello, world!" in the logs
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.  # Prints the message across two lines
